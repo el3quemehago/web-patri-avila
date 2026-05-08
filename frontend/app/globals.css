@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #F9F8F6;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background-color: #111111;
+    color: #F9F8F6;
+  }
+}
+
+@layer components {
+  .container-edit {
+    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-14;
+  }
+  .small-caps {
+    @apply font-mono uppercase tracking-editorial text-xs;
+  }
+  .rule {
+    @apply border-0 border-t border-ink/15;
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.4s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+  .editorial-prose {
+    @apply font-sans text-base lg:text-lg leading-relaxed text-ink/90;
+  }
+  .editorial-prose p {
+    @apply mb-6;
+  }
+  .editorial-prose h2 {
+    @apply font-serif text-3xl md:text-4xl mt-12 mb-4 leading-tight tracking-tight;
+  }
+  .editorial-prose h3 {
+    @apply font-serif text-2xl mt-10 mb-3 leading-snug;
+  }
+  .editorial-prose blockquote {
+    @apply border-l-2 border-accent pl-6 italic font-serif text-2xl my-8 text-ink;
+  }
+  .editorial-prose a {
+    @apply underline underline-offset-4 decoration-accent hover:text-accent;
+  }
+  .editorial-prose ul {
+    @apply list-disc pl-6 mb-6 space-y-2;
+  }
+  .editorial-prose ol {
+    @apply list-decimal pl-6 mb-6 space-y-2;
+  }
+}
+
+/* Reveal on load animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+/* Newspaper rule (double border) */
+.double-rule {
+  border-top: 1px solid #111111;
+  position: relative;
+}
+.double-rule::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #111111;
+}
+
+/* Image grayscale effect */
+.img-grayscale {
+  filter: grayscale(100%);
+  transition: filter 0.7s ease;
+}
+.img-grayscale:hover {
+  filter: grayscale(0%);
+}
+
+/* Marquee for brands */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}

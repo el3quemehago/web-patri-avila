@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Patricia Ávila Sánchez — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web portfolio editorial para una periodista. Sitio **estático puro**, sin
+backend ni base de datos. Construido con **Next.js 14** + **Tailwind CSS** y
+preparado para desplegarse gratis en **Cloudflare Pages**.
 
-## Available Scripts
+## Tecnologías
 
-In the project directory, you can run:
+- Next.js 14 (App Router) con `output: 'export'` (sitio 100% estático)
+- Tailwind CSS
+- gray-matter + remark (contenido en Markdown)
+- Formspree (formulario de contacto sin servidor propio)
+- Lucide React (iconografía)
+- Tipografías Cormorant Garamond + IBM Plex Sans + IBM Plex Mono
 
-### `npm start`
+## Requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node **>=18.17 <=20.x** (especificado en `package.json`)
+- Yarn
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Desarrollo
 
-### `npm test`
+```bash
+yarn install
+yarn dev
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La web abre en `http://localhost:3000`.
 
-### `npm run build`
+## Build estático para Cloudflare Pages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Esto genera la carpeta `out/` con todo el sitio estático listo para subir.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Configuración en Cloudflare Pages
 
-### `npm run eject`
+- **Framework preset:** Next.js (Static HTML Export)
+- **Build command:** `yarn build`
+- **Build output directory:** `out`
+- **Node version:** 18 o 20 (definido también en `package.json` `engines`)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Añadir un trabajo nuevo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Crea un archivo en `content/trabajos/mi-nuevo-trabajo.md`.
+2. Añade el frontmatter:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```markdown
+---
+title: "Título del trabajo"
+date: "2025-01-20"
+client: "Medio o cliente"
+category: "Reportaje"           # Periodismo de Marca | Reportaje | Entrevista | Corporativo …
+image: "https://…"              # Opcional
+excerpt: "Resumen breve."
+externalUrl: "https://…"        # Opcional, enlace al original
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Aquí el cuerpo del proyecto en **Markdown**.
+```
 
-## Learn More
+3. `yarn build` regenera el sitio. El nuevo trabajo aparecerá en el archivo,
+   en los filtros y tendrá su propia URL `/trabajos/mi-nuevo-trabajo/`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Formspree
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+El endpoint del formulario está en `frontend/.env`:
 
-### Code Splitting
+```
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/mdablvyv
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Cámbialo por tu propio formulario de Formspree si lo necesitas.
 
-### Analyzing the Bundle Size
+## SEO
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Cada página tiene `metadata` propia con título, descripción y `openGraph`.
+Sitemap automático en `/sitemap.xml` y `/robots.txt`.
 
-### Making a Progressive Web App
+## Estructura
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+app/                   # Páginas (App Router)
+  page.jsx             # Home
+  sobre-mi/
+  trabajos/
+  trabajos/[slug]/     # Página individual de trabajo
+  servicios/
+  medios/
+  contacto/
+components/            # Componentes React
+content/trabajos/      # Trabajos en Markdown (fuente de la verdad)
+lib/works.js           # Lectura de Markdown
+```
