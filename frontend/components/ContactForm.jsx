@@ -12,10 +12,14 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     setStatus('submitting');
     setError('');
 
-    const form = e.currentTarget;
     const data = new FormData(form);
 
     try {
@@ -69,7 +73,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8" data-testid="contact-form" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-8" data-testid="contact-form">
       <Field label="Tu nombre" name="name" required>
         <input
           type="text"
