@@ -44,11 +44,15 @@ export function getAllWorks() {
       image: data.image || '',
       excerpt: data.excerpt || '',
       externalUrl: data.externalUrl || '',
+      featured: Boolean(data.featured),
       content,
     };
   });
-  // newest first
-  return works.sort((a, b) => (a.date < b.date ? 1 : -1));
+  // featured first, then newest first
+  return works.sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return a.date < b.date ? 1 : -1;
+  });
 }
 
 export async function getWorkBySlug(slug) {
