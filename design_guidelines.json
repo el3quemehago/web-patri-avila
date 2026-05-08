@@ -1,0 +1,111 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 4: Swiss & High-Contrast (Editorial Variant)",
+  "concept": "Modern Newspaper / Cultural Magazine. Professional yet versatile ('sirvo para un roto y para un descosio'). It balances the gravitas of investigative journalism with elegant brand journalism.",
+  "typography": {
+    "headings": {
+      "font": "Cormorant Garamond",
+      "weights": ["400", "600", "700"],
+      "usage": "H1, H2, H3, large pull quotes. Must be closely tracked (tracking-tighter) for impactful, classic newspaper headlines. Never center-align by default."
+    },
+    "body": {
+      "font": "IBM Plex Sans",
+      "weights": ["400", "500"],
+      "usage": "Standard paragraphs, readable long-form text, editorial columns."
+    },
+    "metadata": {
+      "font": "IBM Plex Mono",
+      "weights": ["400"],
+      "usage": "Dates, tags, category pills, small captions, UI labels."
+    },
+    "scale": {
+      "h1": "text-5xl sm:text-6xl md:text-7xl leading-none tracking-tighter",
+      "h2": "text-3xl sm:text-4xl md:text-5xl leading-tight",
+      "h3": "text-2xl sm:text-3xl leading-snug",
+      "body": "text-base lg:text-lg leading-relaxed",
+      "small_caps": "text-xs tracking-[0.2em] uppercase"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#F9F8F6",
+      "secondary": "#F0EFEA",
+      "dark_inverse": "#111111",
+      "description": "Warm Pearl / Newsprint off-white. Avoid pure white. Use dark_inverse for the footer to create a striking contrast."
+    },
+    "text": {
+      "primary": "#111111",
+      "secondary": "#555555",
+      "inverse": "#F9F8F6",
+      "description": "Deep ink black and dark charcoal for optimal readability."
+    },
+    "accent": {
+      "primary": "#C8102E",
+      "secondary": "#8A0B20",
+      "description": "Classic editorial red (hinting at classic Spanish magazines like Interviú). Use strictly for thin hover underlines, active filter states, or discrete datestamps."
+    },
+    "borders": {
+      "light": "rgba(17, 17, 17, 0.1)",
+      "heavy": "#111111"
+    }
+  },
+  "spacing_and_layout": {
+    "grid": "Bento 'Tetris' grid mixed with classic newspaper column structures. Use grid-cols-1 md:grid-cols-4 lg:grid-cols-12.",
+    "spacing": "Generous padding (p-8, p-12, p-16). Content must breathe. Use negative space aggressively.",
+    "structural_lines": "CRITICAL: Emulate newspaper layout using thin black borders. Use border-r, border-b (border-black/10 or border-black/20) between grid items instead of containing them in cards."
+  },
+  "components": {
+    "navigation": "Sticky, minimal. Logo left (Serif), Links right (Sans/Mono). Bottom border 1px solid to separate from content. Use backdrop-blur with off-white background.",
+    "buttons": "Sharp edges (rounded-none or max rounded-sm). Black background, white text. Red background on hover. Small mono font uppercase.",
+    "portfolio_cards": "Cardless. Image prominent, Title below in serif, metadata (date/category) in mono. Use border-b to separate list items.",
+    "filters": "Inline text buttons. Active state receives a red underline or black pill background.",
+    "footer": "Massive typography for the 'Hablemos' CTA. Dark background (#111111) with light text.",
+    "tags": "Square or pill outlines, mono font, tiny text. Used for 'Periodismo de Marca', 'Entrevista', etc."
+  },
+  "motion_and_interactions": {
+    "hover": "Images can start grayscale and transition to color on hover. Text links get a thin red underline expanding on hover.",
+    "entrance": "Fade in up, staggered list for portfolio items. Slow and elegant.",
+    "scroll": "Smooth scrolling is mandatory for the premium magazine feel."
+  },
+  "media": {
+    "image_style": "High contrast, photojournalism aesthetic. Editorial and authentic.",
+    "image_urls": [
+      {
+        "category": "hero_background_texture",
+        "url": "https://images.unsplash.com/photo-1736248991839-67d11f7a5643?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwzfHxtaW5pbWFsaXN0JTIwbmV3c3BhcGVyJTIwdGV4dHVyZXxlbnwwfHx8fDE3NzgyMzQ1ODZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist newspaper texture for subtle background overlays."
+      },
+      {
+        "category": "about_image",
+        "url": "https://images.unsplash.com/photo-1767436620079-c423be9f9a69?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwzfHx2aW50YWdlJTIwdHlwZXdyaXRlciUyMGRlc2t8ZW58MHx8fHwxNzc4MjM0NTg2fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Vintage typewriter to accompany the 'Sobre mí' classic journalism narrative."
+      },
+      {
+        "category": "client_logo_1",
+        "url": "https://images.unsplash.com/photo-1763089221979-ebb2a748358a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwyfHxicmFuZCUyMGxvZ28lMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8fHx8MTc3ODIzNDU4Nnww&ixlib=rb-4.1.0&q=85",
+        "description": "Placeholder for client/media logo (B&W)."
+      },
+      {
+        "category": "client_logo_2",
+        "url": "https://images.pexels.com/photos/10462365/pexels-photo-10462365.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Placeholder for client/media logo (B&W)."
+      }
+    ]
+  },
+  "accessibility": {
+    "contrast": "Ensure minimum 4.5:1 ratio for text. Black on #F9F8F6 is excellent.",
+    "focus": "focus:ring-2 focus:ring-[#C8102E] focus:outline-none focus-visible:ring-offset-2",
+    "data_testid": "MANDATORY. Add 'data-testid' to all buttons, links, inputs, and tab filters."
+  },
+  "instructions_to_main_agent": [
+    "TECH STACK: Next.js + Tailwind CSS + Lucide React (for icons) + formspree-react (for contact form).",
+    "LAYOUT: Build the UI primarily using raw HTML/Tailwind to achieve the bespoke magazine look. Avoid generic Shadcn cards—use thin borders (border-collapse style) to separate content.",
+    "FONTS: Use next/font/google to load Cormorant Garamond (headings), IBM Plex Sans (body), and IBM Plex Mono (metadata). Apply globally.",
+    "HOME: The hero section should feel like a newspaper front page. Massive typography, structural lines, maybe a featured 'lead story' (featured project).",
+    "ABOUT: Incorporate the quote 'sirvo para un roto y para un descosio' prominently. Mix the classic investigative tone with modern corporate appeal.",
+    "PORTFOLIO: Implement filters for categories (e.g., Periodismo de Marca, Entrevistas, Corporativo). Use simple, text-based filters.",
+    "PROJECT PAGE: Must include: Title, Date, Client, Category, Extract, External Link, Main Content. Large text, minimal distraction.",
+    "SEO: Ensure every page has Next.js Metadata and Open Graph tags.",
+    "TESTING: Every interactive element MUST have a descriptive 'data-testid' (e.g., 'nav-about-link', 'filter-btn-corporate')."
+  ]
+}
